@@ -13,7 +13,13 @@ FROM `courses`
 WHERE `cfu` > 10;
 
 3. Selezionare tutti gli studenti che hanno più di 30 anni
-// La lascio per ultima sotto consiglio di Olga. Devo trovare un metodo per rendere la query valida nel tempo.
+SELECT *
+FROM `students`
+WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) > 30;
+
+La soluzione che ho trovato e' la funzione TIMESTAMPDIFF che ci permette di calcolare la differenza tra due date.
+YEAR si puo' sostituire con altre unita' di misura temporali come ad esempio MONTH, DAY, ecc.
+CURDATE() ci offre la data corrente direttamente da MySQL.
 
 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di
 laurea (286)
